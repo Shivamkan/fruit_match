@@ -8,7 +8,7 @@ class cells:
 		self.item = 0
 		self.point = [0,0]
 		self.nextpos = [0, 0]
-		self.nextitem = 0
+		self.nextitem = -1
 
 	def draw(self, screen, imgs):
 		# if self.blocked == 0:
@@ -31,10 +31,11 @@ class cells:
 			self.nextitem = item
 			# print('f')
 		if self.moving:
-			self.point[0] += (self.size / 30) * self.nextpos[1]
-			self.point[1] += (self.size / 30) * self.nextpos[0]
+			self.point[0] += (self.size / 20) * self.nextpos[1]
+			self.point[1] += (self.size / 20) * self.nextpos[0]
 			if abs(self.point[1]) >= self.size*abs(self.nextpos[0]) and abs(self.point[0])>= self.size*abs(self.nextpos[1]):
 				self.moving = 0
 				self.point = [0,0]
 				self.nextpos = [0, 0]
 				self.item = self.nextitem
+				self.nextitem = -1

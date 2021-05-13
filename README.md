@@ -2,11 +2,11 @@
 
 A match 3 game. That will blow your mind.
 
-## This game is not made yet
+## Tell me all the problems you find.
 
 ### What you need
 
-* Python(3)
+* Python(3)(don't know about other version of python)
 
 * Pygame
 
