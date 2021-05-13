@@ -30,7 +30,7 @@ class cells:
 			self.nextpos = pos
 			self.moving = 1
 			self.nextitem = item
-			print('f')
+			# print('f')
 		if self.moving:
 			self.point[0] += (self.size / 30) * self.nextpos[1]
 			self.point[1] += (self.size / 30) * self.nextpos[0]
