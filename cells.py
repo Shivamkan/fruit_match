@@ -17,15 +17,14 @@ class cells:
 				screen.blit(imgs[str(self.item - 1)],
 				            (self.i * self.size + int(self.point[0]), self.j * self.size + int(self.point[1])))
 
-	# def fall(self, grid):
-	# 	if self.j < len(grid) - 2:
-	# 		if grid[self.i][self.j].blocked == 0 and grid[self.i][self.j].item == 0:
-	# 			self.move(self.i, self.j + 1)
-	# 			grid[self.i][self.j+1].item = self.item
-	# 			if self.j > 0:
-	# 				grid[self.i - 1][self.j].fall(grid)
+	def fall(self, grid):
+		if not self.moving:
+			if self.j <= len(grid) - 2:
+				if grid[self.i][self.j].blocked == 0 and grid[self.i][self.j+1].item == 0 and self.item != 0:
+					self.move((1, 0),grid[self.i][self.j+1].item)
+					grid[self.i][self.j+1].move((-1, 0), self.item)
 
-	def move(self, pos=[0, 0], item=0):
+	def move(self, pos=[0, 0], item=-1):
 		if pos != [0, 0]:
 			self.nextpos = pos
 			self.moving = 1

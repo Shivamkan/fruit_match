@@ -88,9 +88,9 @@ class main:
 
 	def spawn(self):
 		for y in range(len(self.grid)):
-			for x in range(len(self.grid)):
-				if self.grid[y][x].item == 0 and not self.grid[y][x].blocked:
-					self.grid[y][x].item = randint(2, len(self.imgs))
+			# for x in range(len(self.grid)):
+				if self.grid[y][0].item == 0 and not self.grid[y][0].blocked:
+					self.grid[y][0].item = randint(2, len(self.imgs))
 				# print(str(self.grid[x][0].item),end=", ")
 
 	def draw(self):
@@ -109,6 +109,12 @@ class main:
 		for x in range(len(self.grid)):
 			for y in range(len(self.grid[0])):
 				self.grid[x][y].move()
+
+	def fall(self):
+		temp = False
+		for x in range(len(self.grid),0,-1):
+			for y in range(len(self.grid[0]),0,-1):
+				self.grid[x-1][y-1].fall(self.grid)
 
 	def cheakmove(self):
 		global sel
@@ -129,5 +135,7 @@ while True:
 	handleInput()
 	main.draw()
 	main.move()
+	main.fall()
+	main.spawn()
 	main.cheakmove()
 	pygame.display.flip()
